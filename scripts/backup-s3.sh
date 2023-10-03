@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Crontab job
+# > 0 21 * * * sh /var/www/bookstack/scripts/backup-s3.sh >/dev/null 2>&1
+
 # S3 bucket details
 BUCKET_NAME="walter-academy"
 BACKUP_NAME="$(date +%Y-%m-%d-%H-%M-%S).sql.gz"
