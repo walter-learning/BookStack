@@ -10,9 +10,11 @@
     @endif
 
     @if ($entity->isA('page'))
-        <a href="{{ $entity->getUrl('/revisions') }}" class="entity-meta-item">
-            @icon('history'){{ trans('entities.meta_revision', ['revisionCount' => $entity->revision_count]) }}
-        </a>
+        @if(userCan('page-update', $entity))
+            <a href="{{ $entity->getUrl('/revisions') }}" class="entity-meta-item">
+                @icon('history'){{ trans('entities.meta_revision', ['revisionCount' => $entity->revision_count]) }}
+            </a>
+        @endif
     @endif
 
     @if ($entity->ownedBy && $entity->owned_by !== $entity->created_by)

@@ -6,6 +6,7 @@ use BookStack\Access\Saml2Service;
 use BookStack\Http\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class Saml2Controller extends Controller
 {
@@ -34,15 +35,19 @@ class Saml2Controller extends Controller
     /**
      * Start the logout flow via SAML2.
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        $logoutDetails = $this->samlService->logout(auth()->user());
+        Auth::guard()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        if ($logoutDetails['id']) {
-            session()->flash('saml2_logout_request_id', $logoutDetails['id']);
-        }
+        #$logoutDetails = $this->samlService->logout(auth()->user());
 
-        return redirect($logoutDetails['url']);
+        #if ($logoutDetails['id']) {
+        #    session()->flash('saml2_logout_request_id', $logoutDetails['id']);
+        #}
+
+        return redirect('/login');
     }
 
     /*

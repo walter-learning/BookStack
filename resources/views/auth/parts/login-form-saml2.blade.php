@@ -2,10 +2,10 @@
     {!! csrf_field() !!}
 
     <div>
-        <button id="saml-login" class="button outline svg">
+        <a href="https://walter-learning-adtest.awsapps.com/start#/saml/default/Walter%20Academy/ins-0c9a8109e274d9d1" id="saml-login" class="button outline svg">
             @icon('saml2')
             <span>{{ trans('auth.log_in_with', ['socialDriver' => config('saml2.name')]) }}</span>
-        </button>
+        </a>
     </div>
 
 </form>

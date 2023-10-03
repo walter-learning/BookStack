@@ -37,7 +37,7 @@ return [
         // or unencrypted messages if it expects them signed or encrypted
         // Also will reject the messages if not strictly follow the SAML
         // standard: Destination, NameId, Conditions ... are validated too.
-        'strict' => true,
+        'strict' => false,
 
         // Enable debug mode (to print errors)
         'debug' => env('APP_DEBUG', false),
