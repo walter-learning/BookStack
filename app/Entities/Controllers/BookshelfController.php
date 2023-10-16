@@ -35,7 +35,7 @@ class BookshelfController extends Controller
     public function index(Request $request)
     {
         $view = setting()->getForCurrentUser('bookshelves_view_type');
-        $listOptions = SimpleListOptions::fromRequest($request, 'bookshelves')->withSortOptions([
+        $listOptions = SimpleListOptions::fromRequest($request, 'bookshelves', false, 'created_at')->withSortOptions([  // Custom edit
             'name'       => trans('common.sort_name'),
             'created_at' => trans('common.sort_created_at'),
             'updated_at' => trans('common.sort_updated_at'),

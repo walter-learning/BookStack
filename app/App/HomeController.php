@@ -65,7 +65,7 @@ class HomeController extends Controller
         if ($homepageOption === 'bookshelves' || $homepageOption === 'books') {
             $key = $homepageOption;
             $view = setting()->getForCurrentUser($key . '_view_type');
-            $listOptions = SimpleListOptions::fromRequest($request, $key)->withSortOptions([
+            $listOptions = SimpleListOptions::fromRequest($request, $key, false, 'created_at')->withSortOptions([  // Custom edit
                 'name' => trans('common.sort_name'),
                 'created_at' => trans('common.sort_created_at'),
                 'updated_at' => trans('common.sort_updated_at'),
