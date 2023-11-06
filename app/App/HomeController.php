@@ -81,6 +81,15 @@ class HomeController extends Controller
             $shelves = app(BookshelfRepo::class)->getAllPaginated(18, $commonData['listOptions']->getSort(), $commonData['listOptions']->getOrder());
             $data = array_merge($commonData, ['shelves' => $shelves]);
 
+            $homepageSetting = setting('app-homepage', '0:');
+            $id = intval(explode(':', $homepageSetting)[0]);
+            /** @var Page $customHomepage */
+            $customHomepage = Page::query()->where('draft', '=', false)->findOrFail($id);
+            $pageContent = new PageContent($customHomepage);
+            $customHomepage->html = $pageContent->render(false);
+
+            $data = array_merge($data, ['customHomepage' => $customHomepage]);
+
             return view('home.shelves', $data);
         }
 

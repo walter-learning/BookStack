@@ -78,57 +78,59 @@
 @stop
 
 @section('right')
-    <div id="page-details" class="entity-details mb-xl">
-        <h5>{{ trans('common.details') }}</h5>
-        <div class="blended-links">
-            @include('entities.meta', ['entity' => $page])
+    @if(userCan('page-update', $page))
+        <div id="page-details" class="entity-details mb-xl">
+            <h5>{{ trans('common.details') }}</h5>
+            <div class="blended-links">
+                @include('entities.meta', ['entity' => $page])
 
-            @if($book->hasPermissions())
-                @if(userCan('restrictions-manage', $book))
-                    <div class="active-restriction">                    
-                        <a href="{{ $book->getUrl('/permissions') }}" class="entity-meta-item">
-                            @icon('lock')
-                            <div>{{ trans('entities.books_permissions_active') }}</div>
-                        </a>                    
-                    </div>
-                @endif
-            @endif
-
-            @if($page->chapter && $page->chapter->hasPermissions())                
-                @if(userCan('restrictions-manage', $page->chapter))
-                    <div class="active-restriction">
-                        <a href="{{ $page->chapter->getUrl('/permissions') }}" class="entity-meta-item">
-                            @icon('lock')
-                            <div>{{ trans('entities.chapters_permissions_active') }}</div>
-                        </a>
-                    </div>
-                @endif
-            @endif
-
-            @if($page->hasPermissions())
-                <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $page))
-                        <a href="{{ $page->getUrl('/permissions') }}" class="entity-meta-item">
-                            @icon('lock')
-                            <div>{{ trans('entities.pages_permissions_active') }}</div>
-                        </a>
-                    @else
-                        <div class="entity-meta-item">
-                            @icon('lock')
-                            <div>{{ trans('entities.pages_permissions_active') }}</div>
+                @if($book->hasPermissions())
+                    @if(userCan('restrictions-manage', $book))
+                        <div class="active-restriction">                    
+                            <a href="{{ $book->getUrl('/permissions') }}" class="entity-meta-item">
+                                @icon('lock')
+                                <div>{{ trans('entities.books_permissions_active') }}</div>
+                            </a>                    
                         </div>
                     @endif
-                </div>
-            @endif
+                @endif
 
-            @if($page->template)
-                <div class="entity-meta-item">
-                    @icon('template')
-                    <div>{{ trans('entities.pages_is_template') }}</div>
-                </div>
-            @endif
+                @if($page->chapter && $page->chapter->hasPermissions())                
+                    @if(userCan('restrictions-manage', $page->chapter))
+                        <div class="active-restriction">
+                            <a href="{{ $page->chapter->getUrl('/permissions') }}" class="entity-meta-item">
+                                @icon('lock')
+                                <div>{{ trans('entities.chapters_permissions_active') }}</div>
+                            </a>
+                        </div>
+                    @endif
+                @endif
+
+                @if($page->hasPermissions())
+                    <div class="active-restriction">
+                        @if(userCan('restrictions-manage', $page))
+                            <a href="{{ $page->getUrl('/permissions') }}" class="entity-meta-item">
+                                @icon('lock')
+                                <div>{{ trans('entities.pages_permissions_active') }}</div>
+                            </a>
+                        @else
+                            <div class="entity-meta-item">
+                                @icon('lock')
+                                <div>{{ trans('entities.pages_permissions_active') }}</div>
+                            </div>
+                        @endif
+                    </div>
+                @endif
+
+                @if($page->template)
+                    <div class="entity-meta-item">
+                        @icon('template')
+                        <div>{{ trans('entities.pages_is_template') }}</div>
+                    </div>
+                @endif
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="actions mb-xl">
         <h5>{{ trans('common.actions') }}</h5>
