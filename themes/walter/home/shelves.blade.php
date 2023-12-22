@@ -1,7 +1,7 @@
-@extends('layouts.tri')
+@extends('layouts.simple')
 
 @section('body')
-    <main class="content-wrap mt-m">
+    <main class="content-wrap mt-m" style="max-width: 1000px; margin: auto;">
         <div style="margin-bottom: 1rem">
             <?php $currentUser = user(); ?>
             <div style="max-width: 310px;">
@@ -11,19 +11,23 @@
 
             <div style="display: flex;">
                 <div style="padding: 0 10px 0 0">
-                    <a href="https://walter-learning.com/" target="_blank" style="display: block; padding: 10px; background-color: white;">Site internet Walter Learning</a>
+                    <a href="https://walter-learning.com/" target="_blank"
+                        style="display: block; padding: 10px; background-color: white;">Site internet Walter Learning</a>
                 </div>
                 <div style="padding: 0 10px">
-                    <a href="https://docs.google.com/spreadsheets/d/1-UIgjZDZkNZ9fjPBuA1F3GkWJq4JC5iQV7vFgVsE0MU/edit?pli=1#gid=1741675441" target="_blank" style="display: block; padding: 10px; background-color: white;">Formations 2023</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1-UIgjZDZkNZ9fjPBuA1F3GkWJq4JC5iQV7vFgVsE0MU/edit?pli=1#gid=1741675441"
+                        target="_blank" style="display: block; padding: 10px; background-color: white;">Formations 2024</a>
                 </div>
                 <div style="padding: 0 10px">
-                    <a href="https://app.walter-learning.com/" target="_blank" style="display: block; padding: 10px; background-color: white;">Espace apprenant (LMS)</a>
+                    <a href="https://app.walter-learning.com/" target="_blank"
+                        style="display: block; padding: 10px; background-color: white;">Espace apprenant (LMS)</a>
                 </div>
                 <div style="padding: 0 0 0 10px">
-                    <a href="https://walterlearning.lightning.force.com/lightning/page/home" target="_blank" style="display: block; padding: 10px; background-color: white;">Salesforce</a>
+                    <a href="https://walterlearning.lightning.force.com/lightning/page/home" target="_blank"
+                        style="display: block; padding: 10px; background-color: white;">Salesforce</a>
                 </div>
             </div>
-            
+
             <div dir="auto">
                 {!! isset($customHomepage->renderedHTML) ? $customHomepage->renderedHTML : $customHomepage->html !!}
             </div>
@@ -73,19 +77,19 @@
 @stop
 
 @section('right')
-    
+
     {{-- <div class="actions mb-xl"> --}}
-        {{-- <h5>{{ trans('common.actions') }}</h5> --}}
-        {{-- <div class="icon-list text-link"> --}}
-            {{-- @if (user()->can('bookshelf-create-all'))
+    {{-- <h5>{{ trans('common.actions') }}</h5> --}}
+    {{-- <div class="icon-list text-link"> --}}
+    {{-- @if (user()->can('bookshelf-create-all'))
                 <a href="{{ url('/create-shelf') }}" class="icon-list-item">
                     <span>@icon('add')</span>
                     <span>{{ trans('entities.shelves_new_action') }}</span>
                 </a>
             @endif --}}
-            {{-- @include('entities.view-toggle', ['view' => $view, 'type' => 'bookshelves']) --}}
-            {{-- @include('home.parts.expand-toggle', ['classes' => 'text-link', 'target' => '.entity-list.compact .entity-item-snippet', 'key' => 'home-details']) --}}
-            {{-- @include('common.dark-mode-toggle', ['classes' => 'icon-list-item text-link']) --}}
-        {{-- </div> --}}
+    {{-- @include('entities.view-toggle', ['view' => $view, 'type' => 'bookshelves']) --}}
+    {{-- @include('home.parts.expand-toggle', ['classes' => 'text-link', 'target' => '.entity-list.compact .entity-item-snippet', 'key' => 'home-details']) --}}
+    {{-- @include('common.dark-mode-toggle', ['classes' => 'icon-list-item text-link']) --}}
+    {{-- </div> --}}
     {{-- </div> --}}
 @stop
