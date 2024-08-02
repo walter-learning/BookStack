@@ -62,16 +62,16 @@ class RegistrationService
             ->where('external_auth_id', '=', $externalId)
             ->first();
 
-        if (is_null($user)) {
-            $userData = [
-                'name'             => $name,
-                'email'            => $email,
-                'password'         => Str::random(32),
-                'external_auth_id' => $externalId,
-            ];
+        // if (is_null($user)) {
+        //     $userData = [
+        //         'name'             => $name,
+        //         'email'            => $email,
+        //         'password'         => Str::random(32),
+        //         'external_auth_id' => $externalId,
+        //     ];
 
-            $user = $this->registerUser($userData, null, false);
-        }
+        //     $user = $this->registerUser($userData, null, false);
+        // }
 
         return $user;
     }
